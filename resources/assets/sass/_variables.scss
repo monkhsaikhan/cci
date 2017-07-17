@@ -1,0 +1,213 @@
+
+// Body
+$body-bg: #f5f8fa;
+
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger: #bf5329;
+
+// Typography
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "Roboto", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.6;
+$text-color: #636b6f;
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
+
+// Template
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.full {
+  background: url('../images/01.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.header {
+  padding-top: 30px;
+}
+
+.header > .column {
+  height: 90px;
+}
+
+.header > .column img{
+  padding: 0px 0px 0px 0px;
+}
+
+.top-list {
+  font-weight: 100; color: #FFF; font-size: 12px
+}
+
+.top-list > li {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.social-link {
+  background: #FFF;
+  padding: 1px 0px !important;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: #0d3625;
+  margin: 0px 2px 0px 2px;
+}
+
+.language-link {
+  text-transform: uppercase;
+  color: #FFF;
+  display: inline-block;
+}
+
+.language-link:hover {
+  color: #F2F2F2;
+}
+
+.navigation {
+  text-align: left;
+  position: relative;
+}
+
+.main-menu {
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+.main-menu li {
+  padding: 10px 10px 20px 10px;
+}
+
+.main-menu li:hover {
+  border-bottom: 3px solid #047eb2;
+  cursor: pointer;
+}
+
+.main-menu li > a {
+  color: #F2F2F2;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 2500px) {
+  .wrapper-image h1 {
+    margin-top: 80%;
+    margin-bottom: 20%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+  .wrapper-image h1 {
+    margin-top: 53%;
+    margin-bottom: 3%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .wrapper-image h1 {
+    margin-top: 40%;
+    margin-bottom: 5%;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .wrapper-image h1 {
+    margin-top: 40%;
+    margin-bottom: 15%;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .wrapper-image h1 {
+    margin-top: 40%;
+    margin-bottom: 5%;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+  .wrapper-image h1 {
+    margin-top: 40%;
+    margin-bottom: 5%;
+  }
+}
+
+.title h4{
+  font-weight: 100 !important;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.box-item {
+  border-bottom: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  position: relative;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+}
+
+.box-item img {
+  float: left;
+  margin-left: 10px;
+}
+
+.box-item h2 {
+  float: left;
+  margin: 0px 0px 0px 20px;
+}
+
+.box-item .text {
+  float: left;
+  margin-left: 5px;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 12px;
+  position: absolute;
+  bottom: 15px;
+  left: 110px;
+}
+
+.box-item:first-child {
+  border-left: none;
+}
