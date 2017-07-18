@@ -1,5 +1,5 @@
 $(window).on("scroll", function() {
-    if($(window).scrollTop() > document.getElementById('idContainer').clientHeight/2.5) {
+    if($(window).scrollTop() > document.getElementById('bxslider').clientHeight/2.5) {
         $(".header").addClass("active");
     } else {
         $(".header").removeClass("active");

@@ -11,6 +11,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slider/jquery.bxslider.css') }}">
 
     <!-- Scripts -->
     <script>
@@ -21,64 +22,96 @@
 </head>
 <body>
 <div id="app">
-    <div class="container-fluid">
-        <div class="row full"  id="idContainer">
-            <div class="container-fluid container-fluid-border header">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-3 column">
-                            <a href="#"><img src="/images/logo.png"></a>
-                        </div>
-                        <div class="col-lg-8 col-md-9 navigation">
-                            <ul class="list-inline top-list">
-                                <li>info@capitalinvestment.mn</li>
-                                <li>Утас: (+976) 76037777, 88001545</li>
-                                <li>
-                                    <a href="#" class="social-link btn"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="social-link btn"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="social-link btn"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#" class="social-link btn"><i class="fa fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="language-link">Монгол</a>
-                                    <label>|</label>
-                                    <a href="#" class="language-link">English</a>
-                                </li>
-                            </ul>
-                            <ul class="list-inline main-menu">
-                                <li>
-                                    <a href="#">Эхлэл</a>
-                                </li>
-                                <li>
-                                    <a href="#">Бидний тухай</a>
-                                </li>
-                                <li>
-                                    <a href="#">Зээл</a>
-                                </li>
-                                <li>
-                                    <a href="#">Мэдээ</a>
-                                </li>
-                                <li>
-                                    <a href="#">Ажлын байр</a>
-                                </li>
-                                <li>
-                                    <a href="#">Холбоо барих</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="container">
-                <div class="row wrapper-image">
-                    <div class="col-lg-6 col-md-9 col-sm-12">
-                        <h1>
-                            <label>3.5%-4% <br />Авто машин</label><br />барьцаалсан зээл
-                        </h1>
-                    </div>
+    <div class="container-fluid container-fluid-border header">
+        <section class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-3 column">
+                    <a href="#"><img src="/images/logo.png"></a>
+                </div>
+                <div class="col-lg-8 col-md-9 navigation">
+                    <ul class="list-inline top-list">
+                        <li>info@capitalinvestment.mn</li>
+                        <li>Утас: (+976) 76037777, 88001545</li>
+                        <li>
+                            <a href="#" class="social-link btn"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="social-link btn"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="social-link btn"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="social-link btn"><i class="fa fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" class="language-link">Монгол</a>
+                            <label>|</label>
+                            <a href="#" class="language-link">English</a>
+                        </li>
+                    </ul>
+                    <ul class="list-inline main-menu">
+                        <li>
+                            <a href="#">Эхлэл</a>
+                        </li>
+                        <li>
+                            <a href="#">Бидний тухай</a>
+                        </li>
+                        <li>
+                            <a href="#">Зээл</a>
+                        </li>
+                        <li>
+                            <a href="#">Мэдээ</a>
+                        </li>
+                        <li>
+                            <a href="#">Ажлын байр</a>
+                        </li>
+                        <li>
+                            <a href="#">Холбоо барих</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </section>
+    </div>
+    <div class="container-fluid slider-container-fluid">
+        <ul id="bxslider" class="bxslider">
+            <li class="slider-item" style="background: url('./images/01.jpg') no-repeat center center;">
+                <div class="row">
+                    <div class="container">
+                        <div class="row wrapper-image">
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                <h1>
+                                    <label>3.5%-4% <br />Авто машин</label><br />барьцаалсан зээл
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="slider-item" style="background: url('./images/Untitled-1.jpg') no-repeat center center;">
+                <div class="row">
+                    <div class="container">
+                        <div class="row wrapper-image">
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                <h1>
+                                    <label>4% <br />Үл хөдлөх</label><br />барьцаалсан зээл
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="slider-item" style="background: url('./images/Untitled-2.jpg') no-repeat center center;">
+                <div class="row">
+                    <div class="container">
+                        <div class="row wrapper-image">
+                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                <h1>
+                                    <label>4% <br />Орон сууц</label><br />барьцаалсан зээл
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container-fluid">
         <div class="row">
             <div class="container">
                 <div class="row marginB30">
@@ -367,5 +400,19 @@
     </div>
 </div>
 <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/slider/jquery.bxslider.js') }}"></script>
+<script>
+
+    $(document).ready(function(){
+        $('#bxslider').bxSlider({
+            pager: false,
+            mode: 'fade',
+            controls: false,
+            auto: true,
+            pause: 5000,
+        });
+    });
+
+</script>
 </body>
 </html>

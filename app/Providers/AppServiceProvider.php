@@ -26,5 +26,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             'App\User\UserRepositoryInterface', 'App\User\UserRepository'
         );
+
+        $this->app->singleton(
+            'App\Post\CategoryRepositoryInterface', 'App\Post\CategoryRepository'
+        );
+
+        $this->app->singleton(
+            'App\Post\PostRepositoryInterface', 'App\Post\PostRepository'
+        );
     }
 }

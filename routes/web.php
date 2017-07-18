@@ -22,4 +22,6 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Backend', 'prefix' => 'a
     Route::get('/', 'AdminController@index')->name('dashboard');
 
     Route::resource('users', 'UsersController');
+
+    Route::resource('post', 'PostController');
 });

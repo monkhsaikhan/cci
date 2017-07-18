@@ -51,6 +51,24 @@ body {
   background-size: cover;
   position: relative;
   margin-bottom: 40px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.slider-container-fluid {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.slider-item {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.slider-item h1 {
+  color: #FFF;
 }
 
 .header {
@@ -352,7 +370,7 @@ h1 label{
   margin-bottom: 20px;
 }
 .container-fluid-border{
-  border-bottom: 1px groove #cdcdcd;
+  //border-bottom: 1px groove #cdcdcd;
   position: fixed;
   width: 100%;
   z-index: 100;
