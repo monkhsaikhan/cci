@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Auth::routes();
+
+Route::group(['middleware' => ['auth'], 'namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.'], function(){
+
+    Route::get('/', 'AdminController@index')->name('dashboard');
+
+    Route::resource('users', 'UsersController');
 });
