@@ -8,6 +8,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Modules\BigSlider;
+use App\Modules\ImageSlider;
+use App\Modules\Page;
+use App\Modules\PageItems;
 use App\Post\PostRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,7 +34,124 @@ class ApiController extends Controller
 
     public function posts()
     {
-        return $this->postRepository->findAll()->toJson();
+        return $this->postRepository->findAllPosts('post')->toJson();
+    }
+
+    public function contentBlock()
+    {
+        return $this->postRepository->findAllPosts('c-block')->toJson();
+    }
+
+    public function customText()
+    {
+        return $this->postRepository->findAllPosts('c-text')->toJson();
+    }
+
+    public function imageCollection()
+    {
+        return ImageSlider::all()->toJson();
+    }
+
+    public function bigSlider()
+    {
+        return BigSlider::all()->toJson();
+    }
+
+    public function pageSave(Request $request)
+    {
+        $items = json_decode($request->get('items'));
+
+        $page = Page::create([
+            'title' => 'Test page'
+        ]);
+
+        foreach ($items as $key => $item)
+        {
+            if($item->type == 'post')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'pageable' => 'App\Post\Post',
+                    'pageable_id' => $item->view->id,
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'c-block')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'pageable' => 'App\Post\Post',
+                    'pageable_id' => $item->view->id,
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'b-s-show')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'pageable' => 'App\Modules\BigSlider',
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'c-text')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'pageable' => 'App\Post\Post',
+                    'pageable_id' => $item->view->id,
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'i-collection')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'pageable' => 'App\Modules\ImageSlider',
+                    'pageable_id' => $item->view->id,
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 't-member')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'background')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'c-form')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'c-offer')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'status')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }
+        }
+
+        return response()->json([
+            'message' => 'Амжилттай'
+        ]);
     }
 
 

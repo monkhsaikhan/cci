@@ -41,6 +41,13 @@
                                 {{ Form::textarea('content', $post->content, ['class' => 'form-control', 'rows' => 20]) }}
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Агуулгын төрөл</label>
+
+                            <div class="col-sm-10">
+                                {!! Form::select('post_type', ['post' => 'Post', 'c-block' => 'Content Block', 'c-text' => 'Custom Text'], $post->post_type, ['class' => 'form-control', 'placeholder' => 'Төрөл сонгох']) !!}
+                            </div>
+                        </div>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-info pull-right">Хадгалах</button>

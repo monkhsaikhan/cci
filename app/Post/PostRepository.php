@@ -15,10 +15,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PostRepository implements PostRepositoryInterface
 {
-    /**
-     * @var Post
-     */
-    private $model;
 
     /**
      * PostRepository constructor.
@@ -65,5 +61,14 @@ class PostRepository implements PostRepositoryInterface
     public function findByList($value, $name, $ignoreId = 0)
     {
         return $this->model->where('id', '!=', $ignoreId)->pluck($name, $value);
+    }
+
+    /**
+     * @param $type
+     * @return mixed
+     */
+    public function findAllPosts($type)
+    {
+        return $this->model->where('post_type', $type)->all();
     }
 }

@@ -13,5 +13,9 @@ use App\Core\RepositoryInterface;
 
 interface PostRepositoryInterface extends RepositoryInterface
 {
-
+    /**
+     * @param $type
+     * @return mixed
+     */
+    public function findAllPosts($type);
 }

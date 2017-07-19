@@ -5,7 +5,7 @@
                 <input type="radio" id="one" v-bind:value="post.id" v-model="selected" v-on:change="select(post)"> <label>{{post.title}}</label>
             </li>
         </ul>
-        <a class="btn btn-success btn-sm" @click="save()">Нэмэх</a>
+        <a class="btn btn-success btn-sm" @click="save()">Сонгох</a>
     </div>
 </template>
 

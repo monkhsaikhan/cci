@@ -31,7 +31,7 @@ class Post extends Model
     /**
      * @var array
      */
-    protected $fillable = ['category_id', 'title', 'content', 'user_id'];
+    protected $fillable = ['category_id', 'title', 'content', 'user_id', 'post_type'];
 
     /**
      * @return BelongsTo

@@ -18,6 +18,7 @@ class CreatePageItemTable extends Migration
             $table->integer('page_id')->unsigned()->index();
             $table->string('pageable');
             $table->integer('pageable_id');
+            $table->string('type');
             $table->timestamps();
 
             $table->foreign('page_id')->references('id')->on('page')->onDelete('cascade');

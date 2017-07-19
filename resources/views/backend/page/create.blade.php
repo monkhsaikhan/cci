@@ -20,7 +20,4 @@
 
 @endsection
 
-@section('js')
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{asset('vendor/tinymce/tiny_mce.js')}}"></script>
-@endsection
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.4/tinymce.min.js"></script>

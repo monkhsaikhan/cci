@@ -34,5 +34,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             'App\Post\PostRepositoryInterface', 'App\Post\PostRepository'
         );
+
+        $this->app->singleton(
+            'App\Modules\PageRepositoryInterface', 'App\Modules\PageRepository'
+        );
     }
 }

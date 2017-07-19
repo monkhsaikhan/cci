@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Modules\PageRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
+     * @var PageRepositoryInterface
      */
-    public function __construct()
-    {
+    private $pageRepository;
 
+    /**
+     * HomeController constructor.
+     * @param PageRepositoryInterface $pageRepository
+     */
+    public function __construct(PageRepositoryInterface $pageRepository)
+    {
+        $this->pageRepository = $pageRepository;
     }
 
     /**
@@ -22,6 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $page = $this->pageRepository->findById(1);
+
+        $views = \Config::get('enums.view');
+
+        return view('home', compact('page', 'views'));
     }
 }
