@@ -24,4 +24,10 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Backend', 'prefix' => 'a
     Route::resource('users', 'UsersController');
 
     Route::resource('post', 'PostController');
+
+    Route::resource('page', 'PageController');
+
+    Route::group(['prefix' => 'api', 'as' => 'api.'], function(){
+        Route::get('posts', 'ApiController@posts')->name('posts');
+    });
 });

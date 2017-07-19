@@ -55,6 +55,8 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ mix('js/admin.js') }}"></script>
+
 @yield('js')
+
 </body>
 </html>
