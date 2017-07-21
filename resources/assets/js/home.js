@@ -12,10 +12,14 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#ex1").slider();
+    $("#ex2").slider();
+    $("#ex3").slider();
 })
 
 $(window).on("scroll", function() {
-    if($(window).scrollTop() > document.getElementById('bxslider').clientHeight/2.5) {
+    if($(window).scrollTop() > document.getElementById('topDiv').clientHeight/2.5) {
         $(".header").addClass("active");
     } else {
         $(".header").removeClass("active");

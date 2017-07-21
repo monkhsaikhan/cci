@@ -10,6 +10,7 @@ namespace App\Modules;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class PageItems extends Model
@@ -31,6 +32,14 @@ class PageItems extends Model
     public function itemable()
     {
         return $this->morphTo('pageable', 'pageable', 'pageable_id');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function offers()
+    {
+        return $this->belongsToMany(Car::class, 'car_offer','page_item_id', 'car_id');
     }
 
 }

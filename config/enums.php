@@ -8,11 +8,12 @@ return [
         'b-s-show' => 'slider',
         'c-text' => 'customText',
         'i-collection' => 'imageCollection',
-        't-member' => '',
-        'background' => '',
-        'c-form' => '',
-        'c-offer' => '',
-        'status' => '',
+        't-member' => 'team',
+        'background' => 'background',
+        'c-form' => 'contactForm',
+        'c-offer' => 'carOffer',
+        'status' => 'status',
+        'service' => 'service',
     ]
 
 ];

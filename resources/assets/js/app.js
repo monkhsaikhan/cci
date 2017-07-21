@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 require('./../../../node_modules/simplelightbox/dist/simple-lightbox.min');
+require('./../../../node_modules/bootstrap-slider/dist/bootstrap-slider.min');
 
 window.Vue = require('vue');
 

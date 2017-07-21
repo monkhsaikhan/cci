@@ -23,6 +23,18 @@
 
                         <c-text v-if="showType == 'c-text'" v-on:saved="saveItem"></c-text>
 
+                        <t-member v-if="showType == 't-member'" v-on:saved="saveItem" ></t-member>
+
+                        <background v-if="showType == 'background'" v-on:saved="saveItem"></background>
+
+                        <c-form v-if="showType == 'c-form'" v-on:saved="saveItem"></c-form>
+
+                        <c-offer v-if="showType == 'c-offer'" v-on:saved="saveItem"></c-offer>
+
+                        <status v-if="showType == 'status'" v-on:saved="saveItem"></status>
+
+                        <service v-if="showType == 'service'" v-on:saved="saveItem"></service>
+
                     </div>
 
                 </div>
@@ -39,7 +51,7 @@
 
                     <div class="box-header">
 
-                        <input type="text" class="form-control" placeholder="Page title" />
+                        <input type="text" class="form-control" placeholder="Page title" v-model="page_title" />
 
                     </div>
 
@@ -72,12 +84,19 @@
     import ImageCollection from './../components/items/ImageCollection.vue'
     import BigSlideShow from './../components/items/BigSlider.vue'
     import CustomText from './../components/items/CustomText.vue'
+    import TeamMembers from './../components/items/TeamMembers.vue'
+    import Background from './../components/items/Background.vue'
+    import Contact from './../components/items/Contact.vue'
+    import Status from './../components/items/Status.vue'
+    import Service from './../components/items/Service.vue'
+    import CarOffer from './../components/items/CarOffer.vue'
 
     export default {
 
         data() {
             return {
                 showType: 'post',
+                page_title: '',
                 items: []
             }
         },
@@ -88,7 +107,13 @@
             'c-block': ContentBlock,
             'i-collection': ImageCollection,
             'b-s-show': BigSlideShow,
-            'c-text': CustomText
+            'c-text': CustomText,
+            't-member': TeamMembers,
+            'background': Background,
+            'c-form': Contact,
+            'status': Status,
+            'c-offer': CarOffer,
+            'service': Service
         },
 
         methods: {
@@ -122,11 +147,37 @@
                 {
                     item.view = this.addPost(data);
                 }
+                if(this.showType == 't-member')
+                {
+                    item.view = this.addBigSlideShow(data);
+                }
+                if(this.showType == 'background')
+                {
+                    item.view = this.addPost(data);
+                }
+                if(this.showType == 'c-form')
+                {
+                    item.view = this.addBigSlideShow(data);
+                }
+                if(this.showType == 'c-offer')
+                {
+                    item.view = this.addBigSlideShow(data);
+                }
+                if(this.showType == 'status')
+                {
+                    item.view = this.addBigSlideShow(data);
+                }
+                if(this.showType == 'service')
+                {
+                    item.view = this.addBigSlideShow(data);
+                }
                 this.items.push(item);
             },
             savePage()
             {
-                axios.post('/admin/api/page/save', {items : JSON.stringify(this.items)}).then(response => {
+                axios.post('/admin/api/page/save', {items : JSON.stringify(this.items), title: this.page_title}).then(response => {
+                    swal('Амжилттай', 'Хуудас бүртгэгдлээ', 'success')
+                }).catch(function (errors) {
 
                 })
             },

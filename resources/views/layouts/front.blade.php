@@ -19,10 +19,12 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
+    @yield('css')
 </head>
 <body>
 <div id="app">
-    <div class="container-fluid container-fluid-border header">
+    <div class="container-fluid container-fluid-border header" id="header">
         <section class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-3 column">
@@ -45,24 +47,11 @@
                         </li>
                     </ul>
                     <ul class="list-inline main-menu">
+                        @foreach($pages as $page)
                         <li>
-                            <a href="#">Эхлэл</a>
+                            <a href="{{ $page->is_current == 1 ? route('home') : route('page', $page->getKey()) }}">{{ $page->title }}</a>
                         </li>
-                        <li>
-                            <a href="#">Бидний тухай</a>
-                        </li>
-                        <li>
-                            <a href="#">Зээл</a>
-                        </li>
-                        <li>
-                            <a href="#">Мэдээ</a>
-                        </li>
-                        <li>
-                            <a href="#">Ажлын байр</a>
-                        </li>
-                        <li>
-                            <a href="#">Холбоо барих</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -173,5 +162,6 @@
     });
 
 </script>
+@yield('js')
 </body>
 </html>

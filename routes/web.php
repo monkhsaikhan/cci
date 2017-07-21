@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/page/{id}', 'HomeController@page')->name('page');
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -29,12 +31,15 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Backend', 'prefix' => 'a
 
     Route::resource('page', 'PageController');
 
+    Route::resource('car', 'CarController');
+
     Route::group(['prefix' => 'api', 'as' => 'api.'], function(){
         Route::get('posts', 'ApiController@posts')->name('posts');
         Route::get('contentBlock', 'ApiController@contentBlock')->name('contentBLock');
         Route::get('image/collection', 'ApiController@imageCollection')->name('imageCollection');
         Route::get('big/slider', 'ApiController@bigSlider')->name('bigSlider');
         Route::get('custom/text', 'ApiController@customText')->name('customText');
+        Route::get('background', 'ApiController@background')->name('background');
         Route::post('page/save', 'ApiController@pageSave')->name('pageSave');
     });
 });

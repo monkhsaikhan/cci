@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Modules\Background;
 use App\Modules\BigSlider;
 use App\Modules\ImageSlider;
 use App\Modules\Page;
@@ -57,12 +58,16 @@ class ApiController extends Controller
         return BigSlider::all()->toJson();
     }
 
+    public function background() {
+        return Background::all()->toJson();
+    }
+
     public function pageSave(Request $request)
     {
         $items = json_decode($request->get('items'));
 
         $page = Page::create([
-            'title' => 'Test page'
+            'title' => $request->get('title')
         ]);
 
         foreach ($items as $key => $item)
@@ -115,6 +120,7 @@ class ApiController extends Controller
             {
                 PageItems::create([
                     'page_id' => $page->getKey(),
+                    'pageable' => 'App\User\User',
                     'type' => $item->type,
                     'sort' => $key
                 ]);
@@ -122,6 +128,8 @@ class ApiController extends Controller
             {
                 PageItems::create([
                     'page_id' => $page->getKey(),
+                    'pageable' => 'App\Modules\Background',
+                    'pageable_id' => $item->view->id,
                     'type' => $item->type,
                     'sort' => $key
                 ]);
@@ -136,10 +144,18 @@ class ApiController extends Controller
             {
                 PageItems::create([
                     'page_id' => $page->getKey(),
+                    'pageable' => 'App\Modules\Car',
                     'type' => $item->type,
                     'sort' => $key
                 ]);
             }else if($item->type == 'status')
+            {
+                PageItems::create([
+                    'page_id' => $page->getKey(),
+                    'type' => $item->type,
+                    'sort' => $key
+                ]);
+            }else if($item->type == 'service')
             {
                 PageItems::create([
                     'page_id' => $page->getKey(),

@@ -29,7 +29,26 @@ class HomeController extends Controller
     public function index()
     {
 
-        $page = $this->pageRepository->findById(1);
+        $page = $this->pageRepository->findHome();
+
+        if(is_null($page))
+        {
+            return view('errors.404');
+        }
+
+        $views = \Config::get('enums.view');
+
+        return view('home', compact('page', 'views'));
+    }
+
+    public function page($id)
+    {
+        $page = $this->pageRepository->findById($id);
+
+        if(is_null($page))
+        {
+            return view('errors.404');
+        }
 
         $views = \Config::get('enums.view');
 

@@ -1,5 +1,5 @@
 <!-- Slider -->
-<div class="container-fluid slider-container-fluid">
+<div class="container-fluid slider-container-fluid" id="topDiv">
     <ul id="bxslider" class="bxslider">
         <li class="slider-item" style="background: url('./images/01.jpg') no-repeat center center;">
             <div class="row">

@@ -3,24 +3,24 @@
     <div class="row">
         <div class="section-bg" id="idSectionBg">
             <div class="bg-wrap">
-                <div class="bg" style="background-image: url('images/salon.png'); background-position: center center; background-color: #051d29;"></div>
+                <div class="bg" style="background-image: url('{{asset('images/salon.png')}}'); background-position: center center; background-color: #051d29;"></div>
                 <div class="row" id="idBgWrap">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-2">
-                                <img src="images/timer.png">
+                                <img src="{{ asset('images/timer.png') }}">
                                 <h5>
                                     Хурдан шуурхай
                                 </h5>
                             </div>
                             <div class="col-lg-2">
-                                <img src="images/handshake.png">
+                                <img src="{{ asset('images/timer.png') }}">
                                 <h5>
                                     Найдвартай
                                 </h5>
                             </div>
                             <div class="col-lg-2">
-                                <img src="images/pie-chart.png">
+                                <img src="{{ asset('images/timer.png') }}">
                                 <h5>
                                     Бага хүүтэй
                                 </h5>

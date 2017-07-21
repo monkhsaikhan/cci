@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposer\MenuComposer;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layouts.front', MenuComposer::class);
     }
 
     /**
@@ -37,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(
             'App\Modules\PageRepositoryInterface', 'App\Modules\PageRepository'
+        );
+
+        $this->app->singleton(
+            'App\Modules\CarRepositoryInterface', 'App\Modules\CarRepository'
         );
     }
 }

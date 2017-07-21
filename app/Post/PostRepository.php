@@ -69,6 +69,6 @@ class PostRepository implements PostRepositoryInterface
      */
     public function findAllPosts($type)
     {
-        return $this->model->where('post_type', $type)->all();
+        return $this->model->where('post_type', $type)->get();
     }
 }

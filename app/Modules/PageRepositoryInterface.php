@@ -14,4 +14,8 @@ use App\Core\RepositoryInterface;
 interface PageRepositoryInterface extends RepositoryInterface
 {
 
+    /**
+     * @return mixed
+     */
+    public function findHome();
 }

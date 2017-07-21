@@ -30,7 +30,7 @@ class Page extends Model
      */
     public function items()
     {
-        return $this->hasMany(PageItems::class, 'page_id');
+        return $this->hasMany(PageItems::class, 'page_id')->orderBy('sort', 'asc');
     }
 
 }

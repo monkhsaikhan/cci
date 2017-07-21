@@ -2,11 +2,27 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Modules\PageRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
+    /**
+     * @var PageRepositoryInterface
+     */
+    private $pageRepository;
+
+    /**
+     * PageController constructor.
+     * @param PageRepositoryInterface $pageRepository
+     */
+    public function __construct(PageRepositoryInterface $pageRepository)
+    {
+
+        $this->pageRepository = $pageRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,9 @@ class PageController extends Controller
      */
     public function index()
     {
+        $pages = $this->pageRepository->findByPaginate(15);
 
+        return view('backend.page.index', compact('pages'));
     }
 
     /**

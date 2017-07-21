@@ -22,7 +22,8 @@
                     {title: 'Photo background', key: 'background'},
                     {title: 'Contact Form', key: 'c-form'},
                     {title: 'Car offer', key: 'c-offer'},
-                    {title: 'Status', key: 'status'}
+                    {title: 'Status', key: 'status'},
+                    {title: 'Service', key: 'service'}
                 ]
             }
         },

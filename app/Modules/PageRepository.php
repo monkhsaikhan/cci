@@ -34,7 +34,7 @@ class PageRepository implements PageRepositoryInterface
      */
     public function findAll()
     {
-        // TODO: Implement findAll() method.
+        return $this->model->all();
     }
 
     /**
@@ -52,7 +52,7 @@ class PageRepository implements PageRepositoryInterface
      */
     public function findByPaginate($howMany)
     {
-        // TODO: Implement findByPaginate() method.
+        return $this->model->paginate($howMany);
     }
 
     /**
@@ -64,5 +64,13 @@ class PageRepository implements PageRepositoryInterface
     public function findByList($value, $name, $ignoreId = 0)
     {
         // TODO: Implement findByList() method.
+    }
+
+    /**
+     * @return mixed
+     */
+    public function findHome()
+    {
+        return $this->model->where('is_current', '=', '1')->first();
     }
 }
