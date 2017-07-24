@@ -19,7 +19,7 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <div class="pull-right">
-                            <a href="{{ route('admin.car.create') }}" class="btn btn-info btn-sm">Нэмэх</a>
+                            <a href="{{ route('admin.page.create') }}" class="btn btn-info btn-sm">Нэмэх</a>
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -31,7 +31,7 @@
                                 <tr>
                                     <th>Дугаар</th>
                                     <th>Гарчиг</th>
-                                    <th>Үндсэн хуудас</th>
+                                    <th>Үндсэн хуудас <button class="fa fa-save" onclick="saveCurrent()"></button> </th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -40,7 +40,7 @@
                                     <tr>
                                         <td>{{ $page->getKey() }}</td>
                                         <td>{{ $page->title }}</td>
-                                        <td><input type="radio" name="is_current" value="{{ $page->getKey() }}" {{ $page->is_current == 1 ? 'checked=checked' : '' }} /></td>
+                                        <td><input type="radio" name="is_current" class="select_current" value="{{ $page->getKey() }}" {{ $page->is_current == 1 ? 'checked=checked' : '' }} /></td>
                                         <td>
                                             {!! Form::open(['route' => ['admin.page.destroy', $page->getKey()], 'method' => 'DELETE', 'class' => 'form-inline', 'id' => 'form-destroyer-' . $page->getKey()]) !!}
 
@@ -68,5 +68,18 @@
             </div>
         </div>
     </section>
+
+@endsection
+
+@section('js')
+
+    <script>
+
+        function saveCurrent()
+        {
+            alert($('.select_current:checked').val());
+        }
+
+    </script>
 
 @endsection

@@ -41,9 +41,15 @@
                             <a href="#" class="social-link btn"><i class="fa fa-instagram"></i></a>
                         </li>
                         <li>
-                            <a href="#" class="language-link">Монгол</a>
-                            <label>|</label>
-                            <a href="#" class="language-link">English</a>
+                            <a href="#" class="language-link">
+                                <img src="{{ asset('images/flag/mn.png') }}" width="32px" />
+                            </a>
+                            <a href="#" class="language-link">
+                                <img src="{{ asset('images/flag/uk.png') }}" width="32px" />
+                            </a>
+                            <a href="#" class="language-link">
+                                <img src="{{ asset('images/flag/jp.png') }}" width="32px" />
+                            </a>
                         </li>
                     </ul>
                     <ul class="list-inline main-menu">
@@ -87,21 +93,11 @@
                     </div>
                     <div class="col-lg-3 col-md-3 column">
                         <ul style="line-height:250%">
-                            <li>
-                                <a href="#">Нүүр хуудас</a>
-                            </li>
-                            <li>
-                                <a href="#">Бидний тухай</a>
-                            </li>
-                            <li>
-                                <a href="#">Бизнесийн салбар</a>
-                            </li>
-                            <li>
-                                <a href="#">Мэдээ мэдээлэл</a>
-                            </li>
-                            <li>
-                                <a href="#">Холбоо барих</a>
-                            </li>
+                            @foreach($pages as $page)
+                                <li>
+                                    <a href="{{ $page->is_current == 1 ? route('home') : route('page', $page->getKey()) }}">{{ $page->title }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-3 column">

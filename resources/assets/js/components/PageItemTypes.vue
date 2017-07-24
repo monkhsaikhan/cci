@@ -23,7 +23,9 @@
                     {title: 'Contact Form', key: 'c-form'},
                     {title: 'Car offer', key: 'c-offer'},
                     {title: 'Status', key: 'status'},
-                    {title: 'Service', key: 'service'}
+                    {title: 'Service', key: 'service'},
+                    {title: 'Post offer', key: 'p-offer'},
+                    {title: 'Users', key: 'user'}
                 ]
             }
         },

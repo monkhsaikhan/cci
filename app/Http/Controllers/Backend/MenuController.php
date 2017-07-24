@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Modules\PageRepositoryInterface;
+use App\Modules\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PageController extends Controller
+class MenuController extends Controller
 {
     /**
-     * @var PageRepositoryInterface
+     * @var Menu
      */
-    private $pageRepository;
+    private $menu;
 
     /**
-     * PageController constructor.
-     * @param PageRepositoryInterface $pageRepository
+     * MenuController constructor.
+     * @param Menu $menu
      */
-    public function __construct(PageRepositoryInterface $pageRepository)
+    public function __construct(Menu $menu)
     {
-
-        $this->pageRepository = $pageRepository;
+        $this->menu = $menu;
     }
 
     /**
@@ -30,9 +29,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = $this->pageRepository->findByPaginate(15);
+        $menus = $this->menu->paginate(15);
 
-        return view('backend.page.index', compact('pages'));
+        return view('backend.menu.index', compact('menus'));
     }
 
     /**
@@ -42,7 +41,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('backend.page.create');
+        return view('backend.menu.create');
     }
 
     /**
@@ -98,10 +97,6 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $page = $this->pageRepository->findById($id);
-
-        $page->delete();
-
-        return redirect()->route('admin.page.index');
+        //
     }
 }

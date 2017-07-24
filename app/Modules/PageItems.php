@@ -9,6 +9,7 @@
 namespace App\Modules;
 
 
+use App\Post\Post;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -40,6 +41,14 @@ class PageItems extends Model
     public function offers()
     {
         return $this->belongsToMany(Car::class, 'car_offer','page_item_id', 'car_id');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'post_offer', 'page_item_id', 'post_id');
     }
 
 }

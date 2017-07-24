@@ -35,6 +35,10 @@
 
                         <service v-if="showType == 'service'" v-on:saved="saveItem"></service>
 
+                        <p-offer v-if="showType == 'p-offer'" v-on:saved="saveItem"></p-offer>
+
+                        <user v-if="showType == 'user'" v-on:saved="saveItem"></user>
+
                     </div>
 
                 </div>
@@ -90,6 +94,8 @@
     import Status from './../components/items/Status.vue'
     import Service from './../components/items/Service.vue'
     import CarOffer from './../components/items/CarOffer.vue'
+    import PostOffer from './../components/items/PostOffer.vue'
+    import User from './../components/items/User.vue'
 
     export default {
 
@@ -113,7 +119,9 @@
             'c-form': Contact,
             'status': Status,
             'c-offer': CarOffer,
-            'service': Service
+            'service': Service,
+            'p-offer': PostOffer,
+            'user' : User
         },
 
         methods: {
@@ -161,13 +169,21 @@
                 }
                 if(this.showType == 'c-offer')
                 {
-                    item.view = this.addBigSlideShow(data);
+                    item.view = this.addCarOffer(data);
+                }
+                if(this.showType == 'p-offer')
+                {
+                    item.view = this.addPostOffer(data);
                 }
                 if(this.showType == 'status')
                 {
                     item.view = this.addBigSlideShow(data);
                 }
                 if(this.showType == 'service')
+                {
+                    item.view = this.addBigSlideShow(data);
+                }
+                if(this.showType == 'user')
                 {
                     item.view = this.addBigSlideShow(data);
                 }
@@ -178,7 +194,7 @@
                 axios.post('/admin/api/page/save', {items : JSON.stringify(this.items), title: this.page_title}).then(response => {
                     swal('Амжилттай', 'Хуудас бүртгэгдлээ', 'success')
                 }).catch(function (errors) {
-
+                    swal('Уучлаарай', 'Хүсэлтийг биелүүлэх боломжгүй', 'error')
                 })
             },
             addImageCollection(data)
@@ -186,6 +202,22 @@
                 return {
                     title: data.name,
                     id: data.id
+                }
+            },
+            addPostOffer(data)
+            {
+                return {
+                    title: data.title,
+                    id: data.id,
+                    data: data.posts
+                }
+            },
+            addCarOffer(data)
+            {
+                return {
+                    title: data.title,
+                    id: data.id,
+                    data: data.cars
                 }
             },
             addBigSlideShow(data)

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="container">
-                    <div class="row" style="margin-top: 50px; padding-left: 0px;">
+                    <div class="row" style="margin-top: 50px; padding-left: 0px; margin-bottom: 20px">
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="sr-only control-label" for="name">name</label><span class="wpcf7-form-control-wrap name"><input type="text" name="name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control input-md" id="name" aria-required="true" aria-invalid="false" placeholder="Name"></span>

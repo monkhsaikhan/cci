@@ -72,6 +72,13 @@ class PostController extends Controller
 
         $parameters['user_id'] = \Auth::user()->getKey();
 
+        preg_match('/<img\s+[^>]*src="([^"]*)"[^>]*>/', $parameters['content'], $matches);
+
+        if(!empty($matches))
+        {
+            $parameters['picture'] = $matches[1];
+        }
+
         Post::create($parameters);
 
         return redirect()->route('admin.post.index');

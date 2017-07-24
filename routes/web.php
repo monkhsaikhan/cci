@@ -33,6 +33,10 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Backend', 'prefix' => 'a
 
     Route::resource('car', 'CarController');
 
+    Route::resource('menu', 'MenuController');
+
+    Route::resource('menu.item', 'MenuItemController');
+
     Route::group(['prefix' => 'api', 'as' => 'api.'], function(){
         Route::get('posts', 'ApiController@posts')->name('posts');
         Route::get('contentBlock', 'ApiController@contentBlock')->name('contentBLock');
@@ -40,6 +44,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Backend', 'prefix' => 'a
         Route::get('big/slider', 'ApiController@bigSlider')->name('bigSlider');
         Route::get('custom/text', 'ApiController@customText')->name('customText');
         Route::get('background', 'ApiController@background')->name('background');
+        Route::get('cars', 'ApiController@cars')->name('cars');
         Route::post('page/save', 'ApiController@pageSave')->name('pageSave');
     });
 });

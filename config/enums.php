@@ -14,6 +14,8 @@ return [
         'c-offer' => 'carOffer',
         'status' => 'status',
         'service' => 'service',
+        'p-offer' => 'postOffer',
+        'user' => 'users'
     ]
 
 ];

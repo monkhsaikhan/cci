@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Modules\Background;
 use App\Modules\BigSlider;
+use App\Modules\Car;
 use App\Modules\ImageSlider;
 use App\Modules\Page;
 use App\Modules\PageItems;
@@ -62,112 +63,142 @@ class ApiController extends Controller
         return Background::all()->toJson();
     }
 
+    public function cars()
+    {
+        return Car::all()->toJson();
+    }
+
     public function pageSave(Request $request)
     {
-        $items = json_decode($request->get('items'));
 
-        $page = Page::create([
-            'title' => $request->get('title')
-        ]);
+        \DB::transaction(function() use($request){
 
-        foreach ($items as $key => $item)
-        {
-            if($item->type == 'post')
+            $items = json_decode($request->get('items'));
+
+            $page = Page::create([
+                'title' => $request->get('title')
+            ]);
+
+            foreach ($items as $key => $item)
             {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\Post\Post',
-                    'pageable_id' => $item->view->id,
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'c-block')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\Post\Post',
-                    'pageable_id' => $item->view->id,
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'b-s-show')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\Modules\BigSlider',
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'c-text')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\Post\Post',
-                    'pageable_id' => $item->view->id,
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'i-collection')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\Modules\ImageSlider',
-                    'pageable_id' => $item->view->id,
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 't-member')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\User\User',
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'background')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\Modules\Background',
-                    'pageable_id' => $item->view->id,
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'c-form')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'c-offer')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'pageable' => 'App\Modules\Car',
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'status')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
-            }else if($item->type == 'service')
-            {
-                PageItems::create([
-                    'page_id' => $page->getKey(),
-                    'type' => $item->type,
-                    'sort' => $key
-                ]);
+                if($item->type == 'post')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\Post\Post',
+                        'pageable_id' => $item->view->id,
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'c-block')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\Post\Post',
+                        'pageable_id' => $item->view->id,
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'b-s-show')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\Modules\BigSlider',
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'c-text')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\Post\Post',
+                        'pageable_id' => $item->view->id,
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'i-collection')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\Modules\ImageSlider',
+                        'pageable_id' => $item->view->id,
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 't-member')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\User\User',
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'background')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\Modules\Background',
+                        'pageable_id' => $item->view->id,
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'c-form')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'c-offer')
+                {
+                    $offer = PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'pageable' => 'App\Modules\Car',
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+
+                    $offer->offers()->attach($item->view->data);
+
+                }else if($item->type == 'status')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'service')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }else if($item->type == 'p-offer')
+                {
+                    $offer = PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+
+                    $offer->posts()->attach($item->view->data);
+                }
+                else if($item->type == 'user')
+                {
+                    PageItems::create([
+                        'page_id' => $page->getKey(),
+                        'type' => $item->type,
+                        'sort' => $key
+                    ]);
+                }
             }
-        }
 
-        return response()->json([
-            'message' => 'Амжилттай'
-        ]);
+            return response()->json([
+                'message' => 'Амжилттай'
+            ]);
+        });
+
     }
 
 

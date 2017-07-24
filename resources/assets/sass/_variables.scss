@@ -619,8 +619,8 @@ h1 label{
 }
 
 .slider-handle {
-  width: 16px;
-  height: 16px;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 .slider.slider-horizontal .slider-track {
@@ -629,8 +629,8 @@ h1 label{
 }
 
 .slider-selection {
-  border-radius: 0px;
-  background-image: linear-gradient(to bottom, #F55549 0, #F55549 100%);
+  border-radius: 0px !important;
+  background-image: linear-gradient(to bottom, #F55549 0, #F55549 100%) !important;
 }
 
 .checkbox {
