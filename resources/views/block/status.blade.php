@@ -14,13 +14,13 @@
                                 </h5>
                             </div>
                             <div class="col-lg-2">
-                                <img src="{{ asset('images/timer.png') }}">
+                                <img src="{{ asset('images/handshake.png') }}">
                                 <h5>
                                     Найдвартай
                                 </h5>
                             </div>
                             <div class="col-lg-2">
-                                <img src="{{ asset('images/timer.png') }}">
+                                <img src="{{ asset('images/pie-chart.png') }}">
                                 <h5>
                                     Бага хүүтэй
                                 </h5>

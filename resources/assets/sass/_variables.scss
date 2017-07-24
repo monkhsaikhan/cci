@@ -322,7 +322,7 @@ html{
 }
 
 .title h4{
-  font-weight: 100 !important;
+  font-weight: 300 !important;
   text-transform: uppercase;
   line-height: 1.5;
 }
@@ -938,4 +938,14 @@ input[type="radio"] .styled:checked + label::after {
   position: absolute;
   right: 0px;
   z-index: 10000;
+}
+
+h5 > a {
+  color: #0e0e0e;
+  text-decoration: none;
+}
+
+h5 > a:hover {
+  color: #0e0e0e;
+  text-decoration: none;
 }

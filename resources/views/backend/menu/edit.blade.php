@@ -17,21 +17,21 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="box">
-                    {!! Form::open(['class' => 'form-horizontal', 'route' => 'admin.menu.store', 'files' => true]) !!}
-                    <!-- /.box-header -->
+                {!! Form::open(['class' => 'form-horizontal', 'route' => ['admin.car.update', $menu->getKey()], 'method' => 'PATCH', 'files' => true]) !!}
+                <!-- /.box-header -->
                     <div class="box-body">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Нэр</label>
 
                             <div class="col-sm-10">
-                                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Нэр']) !!}
+                                {!! Form::text('name', $menu->name, ['class' => 'form-control', 'placeholder' => 'Нэр']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Байршил</label>
 
                             <div class="col-sm-10">
-                                {!! Form::text('position', null, ['class' => 'form-control', 'placeholder' => 'Байршил']) !!}
+                                {!! Form::text('position', $menu->position, ['class' => 'form-control', 'placeholder' => 'Байршил']) !!}
                             </div>
                         </div>
                     </div>

@@ -53,6 +53,11 @@
                 background: #606060 !important;
             }
 
+            #map {
+                height: 400px;
+                width: 100%;
+            }
+
         </style>
     @endif
 @endsection

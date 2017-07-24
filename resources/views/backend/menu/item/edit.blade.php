@@ -17,21 +17,28 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="box">
-                    {!! Form::open(['class' => 'form-horizontal', 'route' => 'admin.menu.store', 'files' => true]) !!}
-                    <!-- /.box-header -->
+                {!! Form::open(['class' => 'form-horizontal', 'route' => ['admin.menu.item.update', $item->menu_id, $item->getKey()], 'method' => 'PATCH', 'files' => true]) !!}
+                <!-- /.box-header -->
                     <div class="box-body">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Нэр</label>
 
                             <div class="col-sm-10">
-                                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Нэр']) !!}
+                                {!! Form::text('name', $item->name, ['class' => 'form-control', 'placeholder' => 'Нэр']) !!}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Байршил</label>
+                            <label class="col-sm-2 control-label">Өмнөх холбоо</label>
 
                             <div class="col-sm-10">
-                                {!! Form::text('position', null, ['class' => 'form-control', 'placeholder' => 'Байршил']) !!}
+                                {!! Form::select('root_id', $items, $item->root_id, ['class' => 'form-control', 'placeholder' => 'Сонгох...']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Холбоос</label>
+
+                            <div class="col-sm-10">
+                                {!! Form::select('link', $pages, null, ['class' => 'form-control', 'placeholder' => 'Холбоос']) !!}
                             </div>
                         </div>
                     </div>

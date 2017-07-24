@@ -21,6 +21,85 @@
     </script>
 
     @yield('css')
+
+    <style>
+        #primary_nav_wrap
+        {
+            margin-top:25px
+        }
+
+        #primary_nav_wrap ul
+        {
+            list-style:none;
+            position:relative;
+            float:left;
+            margin:0;
+            padding:0
+        }
+
+        #primary_nav_wrap ul a
+        {
+            display:block;
+            color: #F2F2F2;
+            text-decoration:none;
+            font-weight:700;
+            line-height:32px;
+            padding:0 30px 0px 0px;
+            font-weight: 100;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #primary_nav_wrap ul li
+        {
+            position:relative;
+            float:left;
+            margin:0;
+            padding:0
+        }
+
+        #primary_nav_wrap ul li.current-menu-item
+        {
+        }
+
+        #primary_nav_wrap ul li:hover a
+        {
+
+        }
+
+        #primary_nav_wrap ul ul
+        {
+            display:none;
+            position:absolute;
+            top:100%;
+            left:-10px;
+            background: rgba(0, 0, 0, 0.50);
+            padding:0
+        }
+
+        #primary_nav_wrap ul ul li
+        {
+            float:none;
+            width:200px;
+        }
+
+        #primary_nav_wrap ul ul a
+        {
+            line-height:120%;
+            padding:10px 15px 10px 10px
+        }
+
+        #primary_nav_wrap ul ul ul
+        {
+            top:0;
+            left:100%
+        }
+
+        #primary_nav_wrap ul li:hover > ul
+        {
+            display:block
+        }
+    </style>
+
 </head>
 <body>
 <div id="app">
@@ -33,7 +112,7 @@
                 <div class="col-lg-8 col-md-9 navigation">
                     <ul class="list-inline top-list">
                         <li>info@capitalinvestment.mn</li>
-                        <li>Утас: (+976) 76037777, 88001545</li>
+                        <li>Утас: (+976) 77177777</li>
                         <li>
                             <a href="#" class="social-link btn"><i class="fa fa-facebook"></i></a>
                             <a href="#" class="social-link btn"><i class="fa fa-twitter"></i></a>
@@ -52,13 +131,22 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="list-inline main-menu">
-                        @foreach($pages as $page)
-                        <li>
-                            <a href="{{ $page->is_current == 1 ? route('home') : route('page', $page->getKey()) }}">{{ $page->title }}</a>
-                        </li>
-                        @endforeach
-                    </ul>
+                    <nav id="primary_nav_wrap">
+                        <ul>
+                            @foreach($mainmenu->items()->whereNull('root_id')->get() as $item)
+                                <li>
+                                    <a href="{{ $item->link }}">{{ $item->name }}</a>
+                                    @if($item->children->count() > 0)
+                                        <ul>
+                                            @foreach($item->children as $children)
+                                                <li><a href="{{ $children->link }}">{{ $children->name }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </section>
@@ -92,28 +180,30 @@
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-3 column">
+                        @if($footermenu)
                         <ul style="line-height:250%">
-                            @foreach($pages as $page)
+                            @foreach($footermenu->items()->whereNull('root_id')->get() as $item)
                                 <li>
-                                    <a href="{{ $page->is_current == 1 ? route('home') : route('page', $page->getKey()) }}">{{ $page->title }}</a>
+                                    <a href="{{ $item->link }}">{{ $item->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
+                        @endif
                     </div>
                     <div class="col-lg-3 col-md-3 column">
                         <ul class="top-list">
                             <table style="border-collapse:separate; border-spacing:10px 15px; margin-top: -10px;">
                                 <tr width="100%">
                                     <td width="10%"><img src="/images/location.png" style="float:left; height: 20px;"></td>
-                                    <td>Улаанбаатар их дэлгүүрийн замын ард "Пийс Таур" барилгын 8 давхарт 810 тоот</td>
+                                    <td>Монгол улс, Улаанбаатар хот, Сүхбаатар дүүрэг, 1-р хороо, Жамъяан гүний гудамж 18, “The Down Town” барилга 302, 303 тоот</td>
                                 </tr>
                                 <tr width="100%">
                                     <td width="10%"><img src="/images/phone.png" style="float:left; height: 20px;"></td>
-                                    <td>(+976) <b>7603-7777</b><br>(+976) <b>94990717</b></td>
+                                    <td>(+976) <b>77177777</b></td>
                                 </tr>
                                 <tr width="100%">
                                     <td width="10%"><img src="/images/email.png" style="float:left; height: 20px;"></td>
-                                    <td>info@tumurt-urguu.mn<br>sales@tumurt-urguu.mn<br>hr@tumurt-urguu.mn</td>
+                                    <td>info@capitalinvestment.mn</td>
                                 </tr>
                             </table>
                         </ul>

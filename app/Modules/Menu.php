@@ -10,6 +10,7 @@ namespace App\Modules;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Menu extends Model
 {
@@ -23,5 +24,13 @@ class Menu extends Model
      * @var array
      */
     protected $fillable = ['name', 'position'];
+
+    /**
+     * @return HasMany
+     */
+    public function items()
+    {
+        return $this->hasMany(MenuItem::class, 'menu_id');
+    }
 
 }

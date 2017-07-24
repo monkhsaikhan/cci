@@ -1,8 +1,30 @@
-<div class="row">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="container">
+<div class="container-fluid">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="row" style="margin-top: 50px; padding-left: 0px; margin-bottom: 20px">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ul class="top-list" style="color: #0e0e0e; font-weight: normal">
+                                <table style="border-collapse:separate; border-spacing:10px 15px; margin-top: -10px;">
+                                    <tr width="100%">
+                                        <td width="10%"><img src="/images/location-b.png" style="float:left; height: 20px;"></td>
+                                        <td>Монгол улс, Улаанбаатар хот, Сүхбаатар дүүрэг, 1-р хороо, Жамъяан гүний гудамж 18, “The Down Town” барилга 302, 303 тоот</td>
+                                    </tr>
+                                    <tr width="100%">
+                                        <td width="10%"><img src="/images/phone-b.png" style="float:left; height: 20px;"></td>
+                                        <td>(+976) <b>77177777</b></td>
+                                    </tr>
+                                    <tr width="100%">
+                                        <td width="10%"><img src="/images/mail-b.png" style="float:left; height: 20px;"></td>
+                                        <td>info@capitalinvestment.mn</td>
+                                    </tr>
+                                </table>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
                     <div class="row" style="margin-top: 50px; padding-left: 0px; margin-bottom: 20px">
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <div class="form-group">
@@ -33,4 +55,26 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div id="map"></div>
+    </div>
 </div>
+
+@section('js')
+    <script>
+        function initMap() {
+            var uluru = {lat: 47.9158752, lng: 106.9183457};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNSdS7vUtCxFJGJe53NFpSuxKJ1YMuY8U&callback=initMap">
+    </script>
+
+@endsection

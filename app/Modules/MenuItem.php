@@ -10,6 +10,7 @@ namespace App\Modules;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MenuItem extends Model
 {
@@ -22,6 +23,14 @@ class MenuItem extends Model
     /**
      * @var array
      */
-    protected $fillable = ['menu_id', 'name', 'link', 'sort'];
+    protected $fillable = ['menu_id', 'name', 'link', 'sort', 'root_id'];
+
+    /**
+     * @return HasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(MenuItem::class, 'root_id');
+    }
 
 }

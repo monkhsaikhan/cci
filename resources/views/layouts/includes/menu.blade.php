@@ -34,6 +34,15 @@
                     <i class="fa fa-user"></i> <span>Хэрэглэгч</span>
                 </a>
             </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-file"></i> <span>Тохиргоо</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('admin.menu.index') }}"><i class="fa fa-circle-o"></i> Цэс</a></li>
+                    <li><a href="{{ route('admin.page.index') }}"><i class="fa fa-circle-o"></i> Хуудас</a></li>
+                </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -19,7 +19,7 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <div class="pull-right">
-                            <a href="{{ route('admin.menu.create') }}" class="btn btn-info btn-sm">Нэмэх</a>
+                            <a href="{{ route('admin.menu.item.create', $menu->getKey()) }}" class="btn btn-info btn-sm">Нэмэх</a>
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -30,26 +30,26 @@
                                 <tr>
                                     <th>Дугаар</th>
                                     <th>Гарчиг</th>
+                                    <th>Холбоос</th>
+                                    <th>Root</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($menus as $menu)
+                                @foreach($menu->items as $item)
                                     <tr>
-                                        <td>{{ $menu->getKey() }}</td>
-                                        <td>{{ $menu->name }}</td>
+                                        <td>{{ $item->getKey() }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->link }}</td>
+                                        <td></td>
                                         <td>
-                                            {!! Form::open(['route' => ['admin.menu.destroy', $menu->getKey()], 'method' => 'DELETE', 'class' => 'form-inline', 'id' => 'form-destroyer-' . $menu->getKey()]) !!}
+                                            {!! Form::open(['route' => ['admin.menu.item.destroy', $menu->getKey(), $item->getKey()], 'method' => 'DELETE', 'class' => 'form-inline', 'id' => 'form-destroyer-' . $item->getKey()]) !!}
 
-                                            <a href="{{ route('admin.menu.item.index', $menu->getKey()) }}" class="btn btn-default btn-xs">
-                                                <i class="fa fa-list-ol"></i>
-                                            </a>
-
-                                            <a href="{{ route('admin.menu.edit', $menu->getKey()) }}" class="btn btn-default btn-xs">
+                                            <a href="{{ route('admin.menu.item.edit', [$menu->getKey(), $item->getKey()]) }}" class="btn btn-default btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
 
-                                            <button type="submit" class="btn btn-danger btn-xs btn-destroyer" data-target="#form-destroyer-{{ $menu->getKey() }}">
+                                            <button type="submit" class="btn btn-danger btn-xs btn-destroyer" data-target="#form-destroyer-{{ $item->getKey() }}">
                                                 <i class="fa fa-trash"></i>
                                             </button>
 

@@ -63,7 +63,7 @@ class PageRepository implements PageRepositoryInterface
      */
     public function findByList($value, $name, $ignoreId = 0)
     {
-        // TODO: Implement findByList() method.
+        return $this->model->where('id', '!=', $ignoreId)->pluck($name, $value);
     }
 
     /**
