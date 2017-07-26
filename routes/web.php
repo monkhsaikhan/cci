@@ -17,6 +17,8 @@ Route::get('/page/{id}', 'HomeController@page')->name('page');
 
 Route::get('/post/{id}', 'HomeController@post')->name('post');
 
+Route::post('calculate/{type}', 'HomeController@calculate')->name('post');
+
 Route::get('/welcome', function () {
     return view('welcome');
 });

@@ -12,10 +12,6 @@ $(document).ready(function(){
             }
         });
     });
-
-    $("#ex1").slider();
-    $("#ex2").slider();
-    $("#ex3").slider();
 })
 
 $(window).on("scroll", function() {

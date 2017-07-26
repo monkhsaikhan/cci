@@ -9,6 +9,9 @@ require('./bootstrap');
 
 require('./../../../node_modules/simplelightbox/dist/simple-lightbox.min');
 require('./../../../node_modules/bootstrap-slider/dist/bootstrap-slider.min');
+require('./jquery.formatCurrency-1.4.0.min');
+
+require('./../../../node_modules/vue-bootstrap-slider/dist/vue-bootstrap-slider');
 
 window.Vue = require('vue');
 
@@ -18,7 +21,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('calculate', require('./components/calculate/Calculate.vue'));
 
 const app = new Vue({
     el: '#app'
